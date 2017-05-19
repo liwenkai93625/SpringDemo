@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.oodt:opendapps:0.9-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://E:/home/maven_repository/org/apache/oodt/opendapps/0.9-SNAPSHOT/opendapps-0.9-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/home/maven_repository/org/apache/oodt/opendapps/0.9-SNAPSHOT/opendapps-0.9-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/home/maven_repository/org/apache/oodt/opendapps/0.9-SNAPSHOT/opendapps-0.9-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
