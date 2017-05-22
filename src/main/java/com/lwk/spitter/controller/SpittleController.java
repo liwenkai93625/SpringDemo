@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,7 @@ import java.util.List;
 @RequestMapping("/spittles")
 public class SpittleController {
 
-    private static final String MAX_LONG_AS_STRING =
-            Long.toString(Long.MAX_VALUE);
+    private static final String MAX_LONG_AS_STRING = "9223372036854775807";
     private SpittleRepository spittleRepository;
 
     @Autowired
@@ -28,14 +28,7 @@ public class SpittleController {
         this.spittleRepository = spittleRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String spittles(Model model) {
-        model.addAllAttributes(
-                spittleRepository.findSpittles(Long.MAX_VALUE, 20)
-        );
-        return "spittles";
-    }
-
+    //使用查询参数
     @RequestMapping(method = RequestMethod.GET)
     public List<Spittle> spittles(
             @RequestParam(value = "max",
@@ -44,4 +37,13 @@ public class SpittleController {
                     defaultValue = "20") int count) {
         return spittleRepository.findSpittles(max, count);
     }
+
+    //使用路径变量,这时候方法针对的就是动态的路径变量
+    @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
+    public String spittle (@PathVariable("spittleId") long spittleId, Model model){
+        model.addAttribute(spittleRepository.findOne(spittleId));
+        return "spittle";
+    }
+
+
 }

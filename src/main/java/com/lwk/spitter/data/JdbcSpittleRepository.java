@@ -32,6 +32,11 @@ public class JdbcSpittleRepository implements SpittleRepository {
                 new SpittleRowMapper(), max, count);
     }
 
+    @Override
+    public Spittle findOne(long spittleId) {
+        return null;
+    }
+
     private static class SpittleRowMapper implements RowMapper<Spittle> {
         @Override
         public Spittle mapRow(ResultSet rs, int rowNum) throws SQLException {
